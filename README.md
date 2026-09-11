@@ -4,8 +4,8 @@ Landing page responsiva para a **Corrida do Amanhecer**, um evento fictício de 
 
 ## 🔗 Links
 
-- Site publicado: `[cole aqui o link do GitHub Pages depois de publicar]`
-- Repositório: `[cole aqui o link deste repositório]`
+- Site publicado: `[https://pcmneto95-commits.github.io/corrida-do-amanhecer/]`
+- Repositório: `[https://github.com/pcmneto95-commits/corrida-do-amanhecer]`
 
 ## 🧱 Tecnologias
 
