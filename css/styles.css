@@ -86,10 +86,9 @@ a:focus-visible,
   text-decoration: none;
 }
 .logo span { color: var(--coral); }
-.main-nav ul {
+.main-nav {
   display: flex;
   gap: 1.5rem;
-  list-style: none;
   flex-wrap: wrap;
 }
 .main-nav a { text-decoration: none; font-weight: 500; color: var(--ink-soft); }
@@ -97,7 +96,7 @@ a:focus-visible,
 
 @media (max-width: 640px) {
   .header-inner { justify-content: center; text-align: center; }
-  .main-nav ul { justify-content: center; gap: 1rem; }
+  .main-nav { justify-content: center; gap: 1rem; }
 }
 
 /* ===== Hero ===== */
@@ -138,23 +137,30 @@ a:focus-visible,
   gap: 3rem;
   align-items: start;
 }
-.sobre-text h2 { font-size: 2rem; margin-bottom: 1rem; }
-.sobre-text p { margin-bottom: 1rem; color: var(--ink-soft); max-width: 60ch; }
-.stats { display: grid; gap: 1.5rem; }
-.stat dt {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--teal);
+.sobre-inner > h2 { grid-column: 1; margin-bottom: 1rem; font-size: 2rem; }
+.sobre-inner > p { grid-column: 1; margin-bottom: 1rem; max-width: 60ch; color: var(--ink-soft); }
+.sobre-inner > .stats { grid-column: 2; grid-row: 1 / 4; align-self: start; }
+
+.stats {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  column-gap: 1.5rem;
 }
-.stat dd { color: var(--ink-soft); font-size: 0.95rem; }
+.stats dt { font-family: 'Barlow Condensed', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--teal); }
+.stats dd { color: var(--ink-soft); font-size: 0.95rem; }
 
 @media (max-width: 800px) {
   .sobre-inner { grid-template-columns: 1fr; }
+  .sobre-inner > h2, .sobre-inner > p, .sobre-inner > .stats { grid-column: 1; grid-row: auto; }
 }
 
 /* ===== Percursos ===== */
-.percursos { padding: 5rem 0; background: var(--paper); }
+.percursos {
+  padding: 5rem max(4%, calc((100% - 1100px) / 2));
+  background: var(--paper);
+}
 .percursos h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; }
 .cards {
   display: grid;
@@ -171,11 +177,14 @@ a:focus-visible,
 .card:nth-child(2) { border-left-color: var(--teal); }
 .card:nth-child(3) { border-left-color: var(--night); }
 .card h3 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-.card p { color: var(--ink-soft); margin-bottom: 0.75rem; }
-.card-meta { font-size: 0.85rem; color: var(--night); font-weight: 600; }
+.card p { color: var(--ink-soft); }
+.card-meta { display: block; margin-top: 0.5rem; font-size: 0.85rem; color: var(--night); font-weight: 600; }
 
 /* ===== Galeria ===== */
-.galeria { padding: 5rem 0; background: #fff; }
+.galeria {
+  padding: 5rem max(4%, calc((100% - 1100px) / 2));
+  background: #fff;
+}
 .galeria h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; }
 .galeria-grid {
   display: grid;
@@ -197,7 +206,11 @@ footer { background: var(--night); color: #fff; padding: 4rem 0 1.5rem; }
   gap: 3rem;
   margin-bottom: 2rem;
 }
-.footer-contato h2, .footer-nav h2 { color: #fff; font-size: 1.3rem; margin-bottom: 1rem; }
+.footer-inner > h2 { grid-column: 1; margin-bottom: 1rem; font-size: 1.3rem; color: #fff; }
+.footer-inner > address { grid-column: 1; }
+.footer-inner > .btn { grid-column: 1; width: fit-content; }
+.footer-inner > .footer-nav { grid-column: 2; grid-row: 1 / 4; }
+.footer-nav h2 { color: #fff; font-size: 1.3rem; margin-bottom: 1rem; }
 address {
   font-style: normal;
   color: rgba(255, 255, 255, 0.75);
@@ -205,11 +218,10 @@ address {
   margin-bottom: 1.5rem;
 }
 address a { color: #fff; }
-.footer-nav ul { list-style: none; }
 .footer-nav a {
+  display: block;
   color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
-  display: inline-block;
   padding: 0.25rem 0;
 }
 .footer-nav a:hover { color: var(--amber); }
@@ -223,6 +235,10 @@ address a { color: #fff; }
 
 @media (max-width: 700px) {
   .footer-inner { grid-template-columns: 1fr; }
+  .footer-inner > h2, .footer-inner > address, .footer-inner > .btn, .footer-inner > .footer-nav {
+    grid-column: 1;
+    grid-row: auto;
+  }
 }
 
 /* ===== Acessibilidade de movimento ===== */
